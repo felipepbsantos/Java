@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Agenda {
@@ -65,12 +66,50 @@ public class Agenda {
 
     public void alterar(){
         int pos;
+        String info;
+        boolean menuloop = true;
         System.out.println("Informe a posicao do contato que deseja alterar:");
         pos = Integer.parseInt(ler.nextLine());
         if ((pos < 0) || (pos > lista.length) || (lista[pos] == null)) {
             System.out.println("Nao foi possivel mostrar os detalhes pois o contato indicado nao existe.");
         } else {
             lista[pos].apresentar();
+            while (menuloop){
+                System.out.println();
+                System.out.println("Qual informacao voce quer alterar? Digite Sair para Sair");
+                System.out.println("Id - Nome - Telefone - Nascimento");
+                info = ler.nextLine();
+
+                if (Objects.equals(info, "Id")){
+
+                    System.out.println("Digite o novo valor para o " + info + ":");
+                    lista[pos].id = Integer.parseInt(ler.nextLine());
+
+                } else if (Objects.equals(info, "Nome")) {
+
+                    System.out.println("Digite o novo valor para o " + info + ":");
+                    lista[pos].nome = ler.nextLine();
+
+                } else if (Objects.equals(info, "Telefone")) {
+
+                    System.out.println("Digite o novo valor para o " + info + ":");
+                    lista[pos].telefone = ler.nextLine();
+
+                } else if (Objects.equals(info, "Nascimento")) {
+
+                    System.out.println("Digite o novo valor para o " + info + ":");
+                    lista[pos].nascimento = ler.nextLine();
+
+                } else if (Objects.equals(info, "Sair")) {
+
+                    menuloop = false;
+
+                } else {
+                    System.out.println();
+                    System.out.println("Opcao invalida!");
+                    System.out.println();
+                }
+            }
 
         }
     }
