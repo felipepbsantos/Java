@@ -10,15 +10,27 @@ public class Agenda {
     //Metodos
 
     public void mostrarlista() {
+
+        String text = "";
         System.out.println();
         System.out.println("Contatos:");
         for (int i = 0; i < lista.length; i++) {
             if (lista[i] != null) {
-                System.out.println(i + " - " + lista[i].nome);
+                if (text.equals("")){
+                    text = (i + " - " + lista[i].nome);
+                } else {
+                    text = text + " | " + (i + " - " + lista[i].nome);
+                }
             } else {
-                System.out.println(i + " - Vazio");
+                if (text.equals("")){
+                    text = (i + " - Vazio");
+                } else {
+                    text = text + " | " + (i + " - Vazio");
+                }
+
             }
         }
+        System.out.println(text);
         System.out.println();
     }
 
@@ -52,7 +64,7 @@ public class Agenda {
 
     }
 
-    public void detalhes() {
+    public void detalhes()  {
         int pos;
         System.out.println("Informe a posicao do contato que deseja ver os detalhes:");
         pos = Integer.parseInt(ler.nextLine());
